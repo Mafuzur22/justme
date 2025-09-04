@@ -1,141 +1,266 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hello From Mafuz.</title>
-    <link rel="stylesheet" href="style/style.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mafuzur | Developer Portfolio</title>
+  <meta name="description" content="The personal portfolio of Mafuzur — projects, skills, and ways to get in touch." />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>⚡</text></svg>">
+  <!-- Tailwind Play CDN (no build step needed) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans: ["Inter", "ui-sans-serif", "system-ui", "Segoe UI", "Roboto", "Helvetica", "Arial", "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"]},
+          colors: { brand: {
+            50:  '#eef9ff',
+            100: '#d9f1ff',
+            200: '#b5e5ff',
+            300: '#84d2ff',
+            400: '#4fb9ff',
+            500: '#1a9bff',
+            600: '#007ae6',
+            700: '#005fb4',
+            800: '#004b8c',
+            900: '#023a6b'
+          }}
+        }
+      },
+      darkMode: 'class'
+    }
+  </script>
+  <style>
+    /* Smooth reveal */
+    .reveal { opacity: 0; transform: translateY(16px); transition: opacity .6s ease, transform .6s ease; }
+    .reveal.show { opacity: 1; transform: none; }
+  </style>
 </head>
-<body>
-    
-    <div class="all-load" id="load-id">
-
-    <div class="ring" id="ring-id">Loading
-        <span class="load-span"></span>
-    </div></div>
-<div class="nav-bar" id="nav-bar-id">
-<ul>
-    <li><a href="/getaintro">Home</a></li>
-    <li><a href="/getaintro/#work-id">Works</a></li>
-    <li><a href="/getaintro/#contact-txt-id">Contact Me</a></li>
-    
-    
-</ul>
-
-
-</div>
-<div class="title">
-    <h1 class="ttl-m">M</h1>
-    <h1 class="ttl-txt">AFUZUR</h1>
-    <h1 class="ttl-dot">.</h1>
-</div>
-<div class="container" id="type-con">
-    <h2>Hello,</h2>
-    <h1>I'm <span class="auto-type"></span></h1>
-    <h3>Quote: <span class="auto-quote"></span></h3>
-    <p>Hey ther, You have my most humble greatings. Hope you would like my protfolio. Have a happy JOURNEY !! </p>
-</div>
-<div class="main" id="main-con">
-<h2 class="work-txt" id="work-id">About My Previous Projects.</h2>
-<div class="details" id="details-id">
-    
-<div class="project">
-    <img src="items/homeftp.png" alt="Image Not Found">
-    <h3>Django Home FTP Server For LAN File Hosting.</h3>
-    <p>A python Django based personal ftp server to Store file for LAN Access From any device. <br><br> Userd Tech. <br><br> 1: Python <br> 2: Django <br> 3: Django HTML 
-    </p>
-</div>
-<div class="project">
-    <img src="items/project-anna.png" alt="Image Not Found">
-    <h3>An Artificial Intelegence Based on PyTorch.</h3>
-    <p>Project-Anna is an AI FEEDFORWARD Neural Net build with python and PyTorch Modiul. <br><br> Userd Tech. <br><br> 1: Python <br> 2: PyTorch <br> 3: VOSK</p>
-</div>
-
-</div>
-<h2 class="contact-txt" id="contact-txt-id">Contact Me.</h2>
-<div class="contact-me" id="contact-id">
-    <div class="mail-me">
-        <form action="mailto:rekhan3362@gmail.com" method="POST" enctype="text/plain">
-            <h3>Email: </h3><input type="email" name="E-Mail " id="c-mail">
-            <h3>Your Message.</h3><textarea name="Message" id="c-message"Enter Your Message...></textarea>
-            <input type="submit" value="Send" id="c-submit">
-        
-        
-        </form>
-
+<body class="font-sans bg-white text-slate-900 antialiased dark:bg-slate-950 dark:text-slate-100">
+  <!-- Header -->
+  <header class="sticky top-0 z-50 backdrop-blur bg-white/70 dark:bg-slate-950/60 border-b border-slate-200/60 dark:border-slate-800/60">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 py-3 flex items-center justify-between">
+      <a href="#home" class="flex items-center gap-2 font-semibold">
+        <span class="inline-flex h-8 w-8 items-center justify-center rounded-xl bg-brand-600 text-white text-lg">M</span>
+        <span class="tracking-wide">Mafuzur</span>
+      </a>
+      <nav class="hidden md:flex items-center gap-6">
+        <a href="#about" class="hover:text-brand-600">About</a>
+        <a href="#projects" class="hover:text-brand-600">Projects</a>
+        <a href="#contact" class="hover:text-brand-600">Contact</a>
+        <button id="themeBtn" class="ml-2 rounded-xl px-3 py-1.5 text-sm border border-slate-300 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-900">Toggle theme</button>
+      </nav>
+      <button id="menuBtn" class="md:hidden p-2 rounded-xl border border-slate-300 dark:border-slate-700" aria-label="Open menu">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
     </div>
-    <div class="social-media">
-        <img class="profile-pic" src="items/FB_IMG_1691646502683.jpg" alt="Image Not Found...">
-        <div class="fb">
-            <img src="icon/facebook.png" alt="Image Not Found.." >
-            <a href="https://facebook.com/Lonley.MaFuz"><h2>ArFin IslA'm Mahfuz</h2></a>
-        </div>
-        <div class="insta">
-            <img src="icon/instagram.png" alt="Image Not Found.." >
-            <a href="https://instagram.com/arfin_mafuz"><h2>@arfin_mafuz</h2></a>
-        </div>
-    
+    <!-- Mobile menu -->
+    <div id="mobileNav" class="md:hidden hidden border-t border-slate-200 dark:border-slate-800">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 py-4 flex flex-col gap-3">
+        <a href="#about" class="hover:text-brand-600" onclick="closeMenu()">About</a>
+        <a href="#projects" class="hover:text-brand-600" onclick="closeMenu()">Projects</a>
+        <a href="#contact" class="hover:text-brand-600" onclick="closeMenu()">Contact</a>
+        <button id="themeBtnMobile" class="mt-2 w-max rounded-xl px-3 py-1.5 text-sm border border-slate-300 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-900">Toggle theme</button>
+      </div>
     </div>
+  </header>
 
+  <!-- Hero -->
+  <section id="home" class="relative overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-b from-brand-50 to-transparent dark:from-slate-900"></div>
+    <div class="relative max-w-6xl mx-auto px-4 sm:px-6 pt-16 pb-20 grid md:grid-cols-2 gap-10 items-center">
+      <div class="reveal">
+        <h1 class="text-4xl sm:text-5xl font-extrabold leading-tight">
+          Hi, I'm <span class="text-brand-700 dark:text-brand-400">Mafuzur</span> —
+          <span class="block mt-1 text-slate-700 dark:text-slate-300">Python & Django developer tinkering with AI.</span>
+        </h1>
+        <p class="mt-5 text-lg text-slate-600 dark:text-slate-400 max-w-prose">I build clean, fast web apps and experiment with PyTorch and speech/NLP stacks. Scroll to see a few things I’ve shipped and what I’m exploring next.</p>
+        <div class="mt-6 flex items-center gap-3">
+          <a href="#projects" class="inline-flex items-center gap-2 rounded-2xl bg-brand-600 text-white px-5 py-3 font-medium shadow hover:bg-brand-700">View Projects
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+          <a href="#contact" class="inline-flex items-center gap-2 rounded-2xl border px-5 py-3 font-medium hover:bg-slate-50 dark:hover:bg-slate-900">Contact</a>
+        </div>
+      </div>
+      <div class="relative reveal">
+        <div class="aspect-square rounded-3xl bg-gradient-to-tr from-brand-200 via-brand-100 to-transparent dark:from-brand-900/40 dark:via-brand-800/30 p-1">
+          <div class="h-full w-full rounded-3xl bg-white/70 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 grid place-items-center">
+            <div class="text-center p-8">
+              <div class="text-7xl">🛠️</div>
+              <p class="mt-4 text-sm text-slate-500">Open to freelance & collabs</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-</div>
-<hr>
-<div class="footer">
+  <!-- About -->
+  <section id="about" class="py-16">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      <div class="grid md:grid-cols-3 gap-10 items-start">
+        <div class="md:col-span-1 reveal">
+          <h2 class="text-2xl sm:text-3xl font-bold">About</h2>
+          <p class="mt-2 text-slate-500">Quick snapshot of what I work with.</p>
+        </div>
+        <div class="md:col-span-2 reveal">
+          <div class="grid sm:grid-cols-2 gap-6">
+            <div class="rounded-2xl border border-slate-200 dark:border-slate-800 p-6">
+              <h3 class="font-semibold">Core stack</h3>
+              <ul class="mt-3 list-disc list-inside text-slate-600 dark:text-slate-400">
+                <li>Python, Django, REST APIs</li>
+                <li>SQLite/PostgreSQL, Redis</li>
+                <li>HTML/CSS/JS, Tailwind</li>
+              </ul>
+            </div>
+            <div class="rounded-2xl border border-slate-200 dark:border-slate-800 p-6">
+              <h3 class="font-semibold">AI & tools</h3>
+              <ul class="mt-3 list-disc list-inside text-slate-600 dark:text-slate-400">
+                <li>PyTorch, feedforward & NLP basics</li>
+                <li>Vosk speech recognition</li>
+                <li>GitHub Actions, GitHub Pages</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
+  <!-- Projects -->
+  <section id="projects" class="py-16 bg-slate-50 dark:bg-slate-900/40">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      <div class="flex items-end justify-between">
+        <div class="reveal">
+          <h2 class="text-2xl sm:text-3xl font-bold">Selected Projects</h2>
+          <p class="mt-2 text-slate-500">Real, working things — shipped and maintained.</p>
+        </div>
+        <a href="https://github.com/Mafuzur22" target="_blank" class="hidden sm:inline rounded-xl border px-4 py-2 text-sm hover:bg-white dark:hover:bg-slate-800">GitHub ↗</a>
+      </div>
 
+      <div class="mt-8 grid md:grid-cols-2 xl:grid-cols-3 gap-6">
+        <!-- Project 1 -->
+        <article class="reveal rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950">
+          <div class="p-6">
+            <h3 class="font-semibold text-lg">LAN File Host — Django Home FTP</h3>
+            <p class="mt-2 text-slate-600 dark:text-slate-400">A simple Django-powered file host for local networks. Browse & share over LAN, no cloud required. Built for speed and minimal setup.</p>
+            <ul class="mt-3 flex flex-wrap gap-2 text-xs text-slate-500">
+              <li class="rounded-full border px-2.5 py-1">Python</li>
+              <li class="rounded-full border px-2.5 py-1">Django</li>
+              <li class="rounded-full border px-2.5 py-1">HTML</li>
+            </ul>
+          </div>
+          <div class="px-6 pb-6 flex gap-3">
+            <a href="#" class="rounded-xl bg-slate-900 text-white dark:bg-white dark:text-slate-900 px-3 py-1.5 text-sm">Live</a>
+            <a href="https://github.com/Mafuzur22" target="_blank" class="rounded-xl border px-3 py-1.5 text-sm">Code</a>
+          </div>
+        </article>
 
-</div>
+        <!-- Project 2 -->
+        <article class="reveal rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950">
+          <div class="p-6">
+            <h3 class="font-semibold text-lg">Project ANNA — Feedforward AI</h3>
+            <p class="mt-2 text-slate-600 dark:text-slate-400">A PyTorch-based feedforward neural network with Vosk speech I/O experiments. Great playground for ML fundamentals.</p>
+            <ul class="mt-3 flex flex-wrap gap-2 text-xs text-slate-500">
+              <li class="rounded-full border px-2.5 py-1">PyTorch</li>
+              <li class="rounded-full border px-2.5 py-1">Python</li>
+              <li class="rounded-full border px-2.5 py-1">Vosk</li>
+            </ul>
+          </div>
+          <div class="px-6 pb-6 flex gap-3">
+            <a href="#" class="rounded-xl bg-slate-900 text-white dark:bg-white dark:text-slate-900 px-3 py-1.5 text-sm">Demo</a>
+            <a href="https://github.com/Mafuzur22" target="_blank" class="rounded-xl border px-3 py-1.5 text-sm">Code</a>
+          </div>
+        </article>
 
+        <!-- Project 3 (placeholder) -->
+        <article class="reveal rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950">
+          <div class="p-6">
+            <h3 class="font-semibold text-lg">Easy Health — Health Tracker (WIP)</h3>
+            <p class="mt-2 text-slate-600 dark:text-slate-400">A lightweight health logging app. Focus on simplicity, data ownership, and frictionless inputs.</p>
+            <ul class="mt-3 flex flex-wrap gap-2 text-xs text-slate-500">
+              <li class="rounded-full border px-2.5 py-1">Django</li>
+              <li class="rounded-full border px-2.5 py-1">SQLite</li>
+              <li class="rounded-full border px-2.5 py-1">Ollama</li>
+            </ul>
+          </div>
+          <div class="px-6 pb-6 flex gap-3">
+            <a href="https://mafuzur22.pythonanywhere.com/" class="rounded-xl bg-slate-900 text-white dark:bg-white dark:text-slate-900 px-3 py-1.5 text-sm">Live</a>
+            <a href="https://github.com/Mafuzur22/easy_health" target="_blank" class="rounded-xl border px-3 py-1.5 text-sm">Code</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
 
+  <!-- Contact -->
+  <section id="contact" class="py-16">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      <div class="grid md:grid-cols-3 gap-10 items-start">
+        <div class="md:col-span-1 reveal">
+          <h2 class="text-2xl sm:text-3xl font-bold">Get in touch</h2>
+          <p class="mt-2 text-slate-500">Have a project in mind? Let's talk.</p>
+        </div>
+        <div class="md:col-span-2 reveal">
+          <form action="mailto:mfrahaman22@gmail.com" method="post" class="grid gap-4">
+            <div class="grid sm:grid-cols-2 gap-4">
+              <input required type="text" name="name" placeholder="Your name" class="w-full rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 px-4 py-3" />
+              <input required type="email" name="email" placeholder="Email" class="w-full rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 px-4 py-3" />
+            </div>
+            <textarea required name="message" placeholder="Tell me a bit about your idea" rows="5" class="w-full rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 px-4 py-3"></textarea>
+            <div class="flex items-center gap-3">
+              <button class="rounded-2xl bg-brand-600 text-white px-5 py-3 font-medium hover:bg-brand-700" type="submit">Send</button>
+              <a href="https://github.com/Mafuzur22" target="_blank" class="rounded-2xl border px-5 py-3 font-medium hover:bg-slate-50 dark:hover:bg-slate-900">GitHub</a>
+            </div>
+            
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
 
+  <footer class="py-10 border-t border-slate-200 dark:border-slate-800">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <p class="text-sm text-slate-500">© <span id="year"></span> Mafuzur. All rights reserved.</p>
+      <div class="flex items-center gap-4 text-sm text-slate-500">
+        <a class="hover:text-brand-600" href="https://facebook.com" target="_blank" rel="noopener">Facebook</a>
+        <a class="hover:text-brand-600" href="https://instagram.com" target="_blank" rel="noopener">Instagram</a>
+        <a class="hover:text-brand-600" href="mailto:mfrahaman22@gmail.com">Email</a>
+      </div>
+    </div>
+  </footer>
 
+  <script>
+    // Year
+    document.getElementById('year').textContent = new Date().getFullYear();
 
+    // Theme toggle (persist)
+    const root = document.documentElement;
+    const themeBtn = document.getElementById('themeBtn');
+    const themeBtnMobile = document.getElementById('themeBtnMobile');
+    const stored = localStorage.getItem('theme');
+    if (stored === 'dark' || (!stored && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      root.classList.add('dark');
+    }
+    function toggleTheme(){
+      root.classList.toggle('dark');
+      localStorage.setItem('theme', root.classList.contains('dark') ? 'dark' : 'light');
+    }
+    themeBtn?.addEventListener('click', toggleTheme);
+    themeBtnMobile?.addEventListener('click', toggleTheme);
 
+    // Mobile menu
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileNav = document.getElementById('mobileNav');
+    menuBtn?.addEventListener('click', () => mobileNav.classList.toggle('hidden'));
+    function closeMenu(){ mobileNav.classList.add('hidden'); }
+    window.closeMenu = closeMenu;
 
-
-
-
-
-
-
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <script src="script/typed.js"></script>
-    <script src="script/script.js"></script>
-    <script>
-        
-        var typed = new Typed(".auto-type", {
-            strings: ["a Developer.","Mafuzur","a Techy.","a Coder."],
-            typeSpeed: 150,
-            backSpeed: 150,
-            loop: true
-        });
-
-        var qtyped = new Typed(".auto-quote", {
-            strings:[
-                "A Bad Workman Always Quarrels With His Tools.","As You Sow So You Reap."
-            ],
-            typeSpeed:200,
-            backDelay: 1000,
-            backSpeed: 100,
-            cursorChar: "<",
-            loop: true
-        })
-
-    </script>
+    // Reveal on scroll
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('show'); } });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
 </body>
 </html>
